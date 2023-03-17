@@ -2,10 +2,6 @@ package nomoreparties.stellarburgers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
 
 public class PersonalAccount {
 
@@ -16,7 +12,7 @@ public class PersonalAccount {
     }
 
     // логотип Stellar Burgers
-    private static By labelStellarBurgers = By.xpath("//*[@id=\"root\"]/div/header/nav/a");
+    private static By labelStellarBurgers = By.xpath("//a[@href=\"/\"]");
     // Кнопка Конструктор
     private static By buttonConstructor = By.xpath("//p[text()=\"Конструктор\"]");
 

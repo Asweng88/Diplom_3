@@ -7,6 +7,8 @@ public class MainPage {
 
     private WebDriver webDriver;
 
+    static String baseURI = "https://stellarburgers.nomoreparties.site/";
+
     public MainPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -32,6 +34,14 @@ public class MainPage {
     // Наименование раздела Начинки
     private static By divWorkdayToppings = By.xpath("//span[text()=\"Начинки\"]//parent::div");
 
+    // Ингредиент булка
+    private static By rolls = By.xpath("//img[@alt=\"Флюоресцентная булка R2-D3\"]");
+
+    // Ингредиент соус
+    private static By sauces = By.xpath("//img[@alt=\"Соус традиционный галактический\"]");
+
+    // Ингредиент Начинка
+    private static By toppings = By.xpath("//img[@alt=\"Биокотлета из марсианской Магнолии\"]");
 
 
     public static By getButtonCreateOrder() {
@@ -40,16 +50,24 @@ public class MainPage {
     public static By getDivWorkdayRolls() {
         return divWorkdayRolls;
     }
-
     public static By getDivWorkdaySauces() {
         return divWorkdaySauces;
     }
     public static By getDivWorkdayToppings() {
         return divWorkdayToppings;
     }
+    public static By getRolls() {
+        return rolls;
+    }
+    public static By getSauces() {
+        return sauces;
+    }
+    public static By getToppings() {
+        return toppings;
+    }
 
     public MainPage open() {
-        webDriver.get("https://stellarburgers.nomoreparties.site/");
+        webDriver.get(baseURI);
         return this;
     }
 
@@ -76,5 +94,4 @@ public class MainPage {
     public void clickButtonTransitionWorkdayToppings() {
         webDriver.findElement(buttonTransitionWorkdayToppings).click();
     }
-
 }
