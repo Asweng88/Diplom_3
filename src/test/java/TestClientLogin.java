@@ -43,7 +43,7 @@ public class TestClientLogin {
         loginPage.fillInputEmail(email);
         loginPage.fillInputPassword(password);
         loginPage.clickButtonInter();
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(MainPage.getButtonCreateOrder()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", MainPage.checkButtonCreateOrder());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class TestClientLogin {
         loginPage.fillInputPassword(password);
         loginPage.clickButtonInter();
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(MainPage.getButtonCreateOrder()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", MainPage.checkButtonCreateOrder());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class TestClientLogin {
         loginPage.fillInputPassword(password);
         loginPage.clickButtonInter();
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(MainPage.getButtonCreateOrder()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", MainPage.checkButtonCreateOrder());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class TestClientLogin {
         loginPage.fillInputPassword(password);
         loginPage.clickButtonInter();
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(MainPage.getButtonCreateOrder()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", MainPage.checkButtonCreateOrder());
     }
 
     @After

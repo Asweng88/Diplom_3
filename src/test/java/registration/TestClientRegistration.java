@@ -48,7 +48,7 @@ public class TestClientRegistration {
         registerPage.fillInputPassword(password);
         registerPage.clickButtonRegister();
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(LoginPage.getHeaderInter()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", loginPage.checkHeaderInterIsEnable());
     }
 
 

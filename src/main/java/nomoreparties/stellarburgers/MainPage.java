@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 public class MainPage {
 
-    private WebDriver webDriver;
+    private static WebDriver webDriver;
 
-    static String baseURI = "https://stellarburgers.nomoreparties.site/";
+    private static final String BASE_URI = "https://stellarburgers.nomoreparties.site/";
 
     public MainPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -34,40 +34,20 @@ public class MainPage {
     // Наименование раздела Начинки
     private static By divWorkdayToppings = By.xpath("//span[text()=\"Начинки\"]//parent::div");
 
-    // Ингредиент булка
-    private static By rolls = By.xpath("//img[@alt=\"Флюоресцентная булка R2-D3\"]");
-
-    // Ингредиент соус
-    private static By sauces = By.xpath("//img[@alt=\"Соус традиционный галактический\"]");
-
-    // Ингредиент Начинка
-    private static By toppings = By.xpath("//img[@alt=\"Биокотлета из марсианской Магнолии\"]");
-
-
-    public static By getButtonCreateOrder() {
-        return buttonCreateOrder;
-    }
     public static By getDivWorkdayRolls() {
         return divWorkdayRolls;
     }
+
     public static By getDivWorkdaySauces() {
         return divWorkdaySauces;
     }
+
     public static By getDivWorkdayToppings() {
         return divWorkdayToppings;
     }
-    public static By getRolls() {
-        return rolls;
-    }
-    public static By getSauces() {
-        return sauces;
-    }
-    public static By getToppings() {
-        return toppings;
-    }
 
     public MainPage open() {
-        webDriver.get(baseURI);
+        webDriver.get(BASE_URI);
         return this;
     }
 
@@ -79,19 +59,42 @@ public class MainPage {
         webDriver.findElement(buttonInterAccount).click();
     }
 
-    public void clickButtonCreateOrder() {
-        webDriver.findElement(buttonCreateOrder).click();
+    public void clickTransitionWorkday(String element) {
+        switch (element) {
+            case "rolls":
+                webDriver.findElement(buttonTransitionWorkdaySauces).click();
+                webDriver.findElement(buttonTransitionWorkdayRolls).click();
+                break;
+            case "sauces":
+                webDriver.findElement(buttonTransitionWorkdaySauces).click();
+                break;
+            case "toppings":
+                webDriver.findElement(buttonTransitionWorkdayToppings).click();
+                break;
+        }
     }
 
-    public void clickButtonTransitionWorkdayRolls() {
-        webDriver.findElement(buttonTransitionWorkdayRolls).click();
+    public static boolean checkButtonCreateOrder() {
+        boolean result = webDriver.findElement(buttonCreateOrder).isEnabled();
+        return result;
     }
 
-    public void clickTransitionWorkdaySauces() {
-        webDriver.findElement(buttonTransitionWorkdaySauces).click();
-    }
+    public static boolean checkDivWorkdayAttribute(String element) {
+        boolean result;
+        switch (element) {
+            case "rolls":
+                result = webDriver.findElement(divWorkdayRolls).getAttribute("class").contains("tab_tab_type_current__2BEPc");
+                break;
+            case "sauces":
+                result = webDriver.findElement(divWorkdaySauces).getAttribute("class").contains("tab_tab_type_current__2BEPc");
+                break;
+            case "toppings":
+                result = webDriver.findElement(divWorkdayToppings).getAttribute("class").contains("tab_tab_type_current__2BEPc");
+                break;
+            default:
+                result = false;
 
-    public void clickButtonTransitionWorkdayToppings() {
-        webDriver.findElement(buttonTransitionWorkdayToppings).click();
+        }
+        return result;
     }
 }

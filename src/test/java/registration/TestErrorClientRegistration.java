@@ -48,7 +48,7 @@ public class TestErrorClientRegistration {
         registerPage.fillInputPassword(password);
         registerPage.clickButtonRegister();
 
-        assertEquals("Некорректный пароль", driver.findElement(RegisterPage.getErrorMessage()).getText());
+        assertEquals("Некорректный пароль", RegisterPage.getErrorMessageText());
     }
 
 

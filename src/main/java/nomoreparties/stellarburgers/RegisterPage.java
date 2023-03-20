@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class RegisterPage {
 
-    private WebDriver webDriver;
+    private static WebDriver webDriver;
 
     public RegisterPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -47,6 +47,11 @@ public class RegisterPage {
 
     public void clickButtonInter(){
         webDriver.findElement(buttonInter).click();
+    }
+
+    public static String getErrorMessageText(){
+        String result = webDriver.findElement(errorMessage).getText();
+        return result;
     }
 
 }

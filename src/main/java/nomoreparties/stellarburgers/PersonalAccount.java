@@ -36,4 +36,9 @@ public class PersonalAccount {
         webDriver.findElement(buttonExit).click();
     }
 
+    public static boolean checkButtonExitIsEnable(){
+        boolean result = webDriver.findElement(buttonExit).isEnabled();
+        return result;
+    }
+
  }

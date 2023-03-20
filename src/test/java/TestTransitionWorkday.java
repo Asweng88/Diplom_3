@@ -3,16 +3,32 @@ import nomoreparties.stellarburgers.MainPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
+@RunWith(Parameterized.class)
 public class TestTransitionWorkday {
     private WebDriver driver;
+    private final String element;
+
+    public TestTransitionWorkday(String element) {
+        this.element = element;
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] testTransitionWorkday() {
+        //Сгенерируй тестовые данные
+        return new Object[][]{
+                {"rolls"},
+                {"sauces"},
+                {"toppings"},
+        };
+    }
 
     @Before
     public void setUp() {
@@ -28,25 +44,8 @@ public class TestTransitionWorkday {
     public void testButtonTransitionWorkdayRolls() {
 
         MainPage mainPage = new MainPage(driver);
-        mainPage.clickTransitionWorkdaySauces();
-        mainPage.clickButtonTransitionWorkdayRolls();
-        assertTrue("Элемент на экране", driver.findElement(MainPage.getRolls()).isDisplayed());
-    }
-
-    @Test
-    public void testButtonTransitionWorkdaySauces() {
-
-        MainPage mainPage = new MainPage(driver);
-        mainPage.clickTransitionWorkdaySauces();
-        assertTrue("Элемент на экране", driver.findElement(MainPage.getRolls()).isDisplayed());
-    }
-
-    @Test
-    public void testButtonTransitionWorkdayToppings() {
-
-        MainPage mainPage = new MainPage(driver);
-        mainPage.clickButtonTransitionWorkdayToppings();
-        assertTrue("Элемент на экране", driver.findElement(MainPage.getRolls()).isDisplayed());
+        mainPage.clickTransitionWorkday(element);
+        assertTrue("Элемент не выбран", MainPage.checkDivWorkdayAttribute(element));
     }
 
     @After

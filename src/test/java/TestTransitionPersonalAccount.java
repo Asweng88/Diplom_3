@@ -46,7 +46,7 @@ public class TestTransitionPersonalAccount {
                 .clickButtonPersonalAccount();
         new PersonalAccount(driver);
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(PersonalAccount.getButtonExit()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", PersonalAccount.checkButtonExitIsEnable());
     }
 
 

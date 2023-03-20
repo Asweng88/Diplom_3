@@ -44,7 +44,8 @@ public class TestPersonalAccountButtonExit {
     @Test
     public void transitionPersonalAccount() {
         new PersonalAccount(driver).clickButtonExit();
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(LoginPage.getHeaderInter()).isEnabled());
+        LoginPage loginPage = new LoginPage(driver);
+        assertTrue("Ожидаемый элемент не найден", loginPage.checkHeaderInterIsEnable());
     }
 
 

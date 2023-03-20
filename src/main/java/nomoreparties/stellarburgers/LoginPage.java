@@ -50,4 +50,9 @@ public class LoginPage {
         webDriver.findElement(buttonRecoverPassword).click();
     }
 
+    public boolean checkHeaderInterIsEnable(){
+        boolean result = webDriver.findElement(headerInter).isEnabled();
+        return result;
+    }
+
 }

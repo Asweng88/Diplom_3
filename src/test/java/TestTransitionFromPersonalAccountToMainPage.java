@@ -50,7 +50,7 @@ public class TestTransitionFromPersonalAccountToMainPage {
         new PersonalAccount(driver)
                 .clickLabelStellarBurgers();
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(MainPage.getButtonCreateOrder()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", MainPage.checkButtonCreateOrder());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestTransitionFromPersonalAccountToMainPage {
         new PersonalAccount(driver)
                 .clickButtonConstructor();
 
-        assertTrue("Ожидаемый элемент не найден", driver.findElement(MainPage.getButtonCreateOrder()).isEnabled());
+        assertTrue("Ожидаемый элемент не найден", MainPage.checkButtonCreateOrder());
     }
 
     @After

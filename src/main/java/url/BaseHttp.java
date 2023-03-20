@@ -6,15 +6,15 @@ import static io.restassured.RestAssured.given;
 
 public class BaseHttp {
 
-    private final String baseUrl = "https://stellarburgers.nomoreparties.site/";
+    private static final String BASE_URI = "https://stellarburgers.nomoreparties.site/";
 
-    private final String JSON = "application/json";
+    private static final String JSON = "application/json";
 
     protected ValidatableResponse doPostRequest(String uri, Object body) {
         return given()
                 .header("Content-Type", JSON)
                 .body(body)
-                .post(baseUrl + uri)
+                .post(BASE_URI + uri)
                 .then();
     }
 
@@ -22,7 +22,7 @@ public class BaseHttp {
         return given()
                 .header("Content-Type", JSON)
                 .header("authorization", accessToken)
-                .delete(baseUrl + uri)
+                .delete(BASE_URI + uri)
                 .then();
     }
 }
